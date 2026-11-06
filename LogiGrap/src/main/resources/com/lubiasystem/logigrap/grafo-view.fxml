@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="550.0" prefWidth="760.0" style="-fx-background-color: #f1f2f6;" xmlns="http://javafx.com" xmlns:fx="http://javafx.com" fx:controller="com.lubiasystem.logigrap.controller.GrafoController">
+    <children>
+
+        <!-- PANEL IZQUIERDO: CONFIGURACIÓN -->
+        <VBox layoutX="15.0" layoutY="15.0" prefWidth="300.0" spacing="12.0" style="-fx-background-color: #ffffff; -fx-padding: 20; -fx-background-radius: 10; -fx-border-color: #e4e7eb; -fx-border-radius: 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, 4);">
+            <children>
+                <Label text="Estructura del Grafo" style="-fx-text-fill: #1e272e; -fx-font-weight: bold;">
+                    <font>
+                        <Font name="Segoe UI" size="16.0" />
+                    </font>
+                </Label>
+
+                <!-- COMENTARIOS Y GUÍAS DIRECTAS EN LA INTERFAZ -->
+                <Label text="PASO 1: Registre los lugares o ciudades que formarán su red." wrapText="true" style="-fx-text-fill: #747d8c; -fx-font-size: 11px; -fx-font-style: italic;" />
+                <Label text="Nombre de la Ciudad / Punto:" style="-fx-text-fill: #2f3542; -fx-font-size: 13px;" />
+                <TextField fx:id="txtNuevaCiudad" promptText="Escriba un nombre (Ej. Monterrey, CDMX)" style="-fx-background-color: #ffffff; -fx-background-radius: 5; -fx-border-color: #ced6e0; -fx-border-radius: 5; -fx-padding: 6;" />
+                <Button maxWidth="Infinity" mnemonicParsing="false" onAction="#guardarCiudad" text="Guardar Ciudad" style="-fx-background-color: #2f3542; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-padding: 8; -fx-cursor: hand;" />
+
+                <Label text="PASO 2: Conecte dos ciudades mediante una carretera o tramo." wrapText="true" style="-fx-text-fill: #747d8c; -fx-font-size: 11px; -fx-font-style: italic; -fx-margin-top: 5;" />
+                <Label text="Seleccione las conexiones y la distancia:" style="-fx-text-fill: #2f3542; -fx-font-size: 13px;" />
+                <ComboBox fx:id="cmbOrigenCarretera" maxWidth="Infinity" promptText="-- Seleccione Origen --" style="-fx-background-color: #ffffff; -fx-background-radius: 5; -fx-border-color: #ced6e0; -fx-border-radius: 5; -fx-padding: 4;" />
+                <ComboBox fx:id="cmbDestinoCarretera" maxWidth="Infinity" promptText="-- Seleccione Destino --" style="-fx-background-color: #ffffff; -fx-background-radius: 5; -fx-border-color: #ced6e0; -fx-border-radius: 5; -fx-padding: 4;" />
+                <TextField fx:id="txtDistancia" promptText="Distancia en Kilómetros (Ej. 150)" style="-fx-background-color: #ffffff; -fx-background-radius: 5; -fx-border-color: #ced6e0; -fx-border-radius: 5; -fx-padding: 6;" />
+                <Button maxWidth="Infinity" mnemonicParsing="false" onAction="#guardarCarretera" text="Conectar Ciudades" style="-fx-background-color: #747d8c; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-padding: 8; -fx-cursor: hand;" />
+
+                <Label text="OPCIONAL: Ver estructura matemática interna." wrapText="true" style="-fx-text-fill: #747d8c; -fx-font-size: 11px; -fx-font-style: italic; -fx-margin-top: 5;" />
+                <Button maxWidth="Infinity" mnemonicParsing="false" onAction="#verMatrizAdyacencia" text="Ver Matriz de Adyacencia" style="-fx-background-color: #2ed573; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-padding: 8; -fx-cursor: hand;" />
+            </children>
+        </VBox>
+
+        <!-- PANEL DERECHO: DIJKSTRA -->
+        <VBox layoutX="335.0" layoutY="15.0" prefWidth="410.0" spacing="12.0" style="-fx-background-color: #ffffff; -fx-padding: 20; -fx-background-radius: 10; -fx-border-color: #e4e7eb; -fx-border-radius: 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, 4);">
+            <children>
+                <Label text="Algoritmo de Despacho Logístico" style="-fx-text-fill: #1e3799; -fx-font-weight: bold;">
+                    <font>
+                        <Font name="Segoe UI" size="16.0" />
+                    </font>
+                </Label>
+
+                <Label text="PASO 3: Calcule el camino más rápido entre dos puntos." wrapText="true" style="-fx-text-fill: #747d8c; -fx-font-size: 11px; -fx-font-style: italic;" />
+                <Label text="Seleccione la ruta comercial a evaluar:" style="-fx-text-fill: #2f3542; -fx-font-size: 13px;" />
+                <ComboBox fx:id="cmbOrigenViaje" maxWidth="Infinity" promptText="-- Punto de Salida / Bodega --" style="-fx-background-color: #ffffff; -fx-background-radius: 5; -fx-border-color: #ced6e0; -fx-border-radius: 5; -fx-padding: 4;" />
+                <ComboBox fx:id="cmbDestinoViaje" maxWidth="Infinity" promptText="-- Punto de Destino / Cliente --" style="-fx-background-color: #ffffff; -fx-background-radius: 5; -fx-border-color: #ced6e0; -fx-border-radius: 5; -fx-padding: 4;" />
+
+                <Button maxWidth="Infinity" mnemonicParsing="false" onAction="#calcularRuta" text="Calcular Ruta Más Corta (Dijkstra)" style="-fx-background-color: #3742fa; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-padding: 10; -fx-font-size: 14px; -fx-cursor: hand;" />
+
+                <Label text="Terminal de Monitoreo e Instrucciones:" style="-fx-text-fill: #2f3542; -fx-font-size: 13px; -fx-margin-top: 5;" />
+                <TextArea fx:id="txtResultados" editable="false" prefHeight="200.0" wrapText="true" style="-fx-control-inner-background: #2f3542; -fx-text-fill: #2ed573; -fx-font-family: 'Consolas', 'Courier New', monospace; -fx-font-size: 13px; -fx-background-radius: 5; -fx-border-color: #ced6e0; -fx-border-radius: 5;" />
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

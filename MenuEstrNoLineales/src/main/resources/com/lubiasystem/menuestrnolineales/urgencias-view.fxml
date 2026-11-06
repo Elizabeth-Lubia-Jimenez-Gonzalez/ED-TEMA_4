@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<HBox spacing="15.0" prefWidth="900.0" prefHeight="550.0"
+      style="-fx-background-color: #ffffff; -fx-font-family: 'Segoe UI', Arial;"
+      xmlns="http://javafx.com" xmlns:fx="http://javafx.com"
+      fx:controller="com.lubiasystem.menuestrnolineales.controller.UrgenciasController">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Panel Izquierdo: Controles -->
+    <VBox spacing="12.0" prefWidth="400.0" HBox.hgrow="NEVER">
+        <HBox alignment="CENTER_LEFT" spacing="10.0">
+            <Button text="← Volver" onAction="#regresarMenu" style="-fx-background-color: #64748b; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;"/>
+            <Label text=" Urgencias Médicas (Heap)" style="-fx-font-weight: bold; -fx-font-size: 16px; -fx-text-fill: #0f172a;"/>
+        </HBox>
+
+        <HBox spacing="10.0">
+            <TextField fx:id="txtNombre" promptText="Nombre Paciente" prefWidth="200.0" style="-fx-padding: 6;"/>
+            <TextField fx:id="txtPrioridad" promptText="Triage (1:Crítico - 5:Leve)" HBox.hgrow="ALWAYS" style="-fx-padding: 6;"/>
+        </HBox>
+
+        <Label text="Operaciones de la Estructura (5 Botones):" style="-fx-text-fill: #1e40af; -fx-font-weight: bold; -fx-font-size: 12px;"/>
+        <GridPane hgap="8.0" vgap="8.0" alignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="33.3"/>
+                <ColumnConstraints percentWidth="33.3"/>
+                <ColumnConstraints percentWidth="33.3"/>
+            </columnConstraints>
+
+            <Button text="1. Ingresar" onAction="#registrarPaciente" maxWidth="Infinity" style="-fx-background-color: #0284c7; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <Button text="2. Atender" onAction="#atenderPaciente" maxWidth="Infinity" style="-fx-background-color: #10b981; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+            <Button text="3. Ver Frente" onAction="#verSiguiente" maxWidth="Infinity" style="-fx-background-color: #3b82f6; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+            <Button text="4. Total Fila" onAction="#contarFila" maxWidth="Infinity" style="-fx-background-color: #8b5cf6; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <Button text="5. Vaciar Sala" onAction="#vaciarSala" maxWidth="Infinity" style="-fx-background-color: #ef4444; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.columnSpan="2"/>
+        </GridPane>
+
+        <Label text="Cola de Espera Lineal Proyectada:" style="-fx-text-fill: #475569; -fx-font-weight: bold;"/>
+        <TextArea fx:id="txtAreaConsola" editable="false" VBox.vgrow="ALWAYS" style="-fx-font-family: 'Consolas'; -fx-control-inner-background: #f8fafc;"/>
+    </VBox>
+
+    <!-- Panel Derecho: Visualización Gráfica -->
+    <VBox spacing="8.0" HBox.hgrow="ALWAYS">
+        <Label text=" Montículo Binario (Min-Heap Estructural) en Vivo:" style="-fx-font-weight: bold; -fx-text-fill: #475569;"/>
+        <ScrollPane fitToWidth="true" fitToHeight="true" style="-fx-border-color: #cbd5e1; -fx-border-radius: 5;" VBox.vgrow="ALWAYS">
+            <Pane fx:id="panelDibujo" style="-fx-background-color: #f8fafc;" prefWidth="500.0" prefHeight="500.0"/>
+        </ScrollPane>
+    </VBox>
+</HBox>

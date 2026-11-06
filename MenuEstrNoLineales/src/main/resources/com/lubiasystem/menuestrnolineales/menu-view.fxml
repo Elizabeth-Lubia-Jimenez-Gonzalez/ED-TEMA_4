@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox alignment="CENTER" spacing="15.0" prefWidth="450.0" prefHeight="380.0"
+      style="-fx-background-color: #f4f6f9; -fx-font-family: 'Segoe UI', Helvetica, Arial;"
+      xmlns="http://javafx.com" xmlns:fx="http://javafx.com"
+      fx:controller="com.lubiasystem.menuestrnolineales.controller.MenuController">
+    <padding>
+        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0"/>
+    </padding>
+
+    <Label text="Estructuras No Lineales" style="-fx-font-weight: bold; -fx-font-size: 22px; -fx-text-fill: #1e293b;"/>
+    <Label text="Aplicaciones del Mundo Real" style="-fx-font-size: 14px; -fx-text-fill: #64748b; -fx-padding: 0 0 10 0;"/>
+
+    <Button text="1. Inventario (Árbol BST)" onAction="#abrirBst" prefWidth="320.0"
+            style="-fx-background-color: #3b82f6; -fx-text-fill: white; -fx-font-size: 13px; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand;"/>
+    <Button text="2. Organigrama (Árbol Jerárquico)" onAction="#abrirOrganigrama" prefWidth="320.0"
+            style="-fx-background-color: #3b82f6; -fx-text-fill: white; -fx-font-size: 13px; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand;"/>
+    <Button text="3. Rutas de Entrega (Grafos)" onAction="#abrirGrafo" prefWidth="320.0"
+            style="-fx-background-color: #3b82f6; -fx-text-fill: white; -fx-font-size: 13px; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand;"/>
+    <Button text="4. Triage de Hospital (Heap)" onAction="#abrirUrgencias" prefWidth="320.0"
+            style="-fx-background-color: #3b82f6; -fx-text-fill: white; -fx-font-size: 13px; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand;"/>
+</VBox>
